@@ -8,8 +8,7 @@ import rpajdak.demo.service.NotesService;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
@@ -44,6 +43,13 @@ public class NotesController {
     @ResponseStatus(OK)
     public List<Note> getAllNotes() {
         return notesService.getAllNotes();
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    @ResponseStatus(NO_CONTENT)
+    public void deleteNote(@PathVariable("id") long id) {
+        notesService.deleteNote(id);
     }
 
 
