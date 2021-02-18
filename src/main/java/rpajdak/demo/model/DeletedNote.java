@@ -1,5 +1,7 @@
 package rpajdak.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +11,12 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Entity
+@Builder
+@AllArgsConstructor
 @Table(name = "deleted_note")
 public class DeletedNote {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     @Column(name = "old_id")
@@ -31,11 +35,4 @@ public class DeletedNote {
     public DeletedNote() {
     }
 
-    public DeletedNote(Long oldId, String title, String content, LocalDate created, LocalDate modified) {
-        OldId = oldId;
-        this.title = title;
-        this.content = content;
-        this.created = created;
-        this.modified = modified;
-    }
 }
