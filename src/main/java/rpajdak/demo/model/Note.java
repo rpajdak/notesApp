@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Entity
+@Table(name = "note")
 public class Note {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
