@@ -20,6 +20,10 @@ public class NotesService {
         notesRepository.save(note);
     }
 
+    public Note getNoteById(Long id) {
+      return notesRepository.getNoteById(id);
+    }
+
     private void setCurrentDateToNewNote(Note note) {
         note.setCreated(LocalDate.now());
     }

@@ -6,4 +6,6 @@ import rpajdak.demo.model.Note;
 
 @Repository
 public interface NotesRepository extends JpaRepository<Note,Long> {
+
+    Note getNoteById(Long id);
 }
