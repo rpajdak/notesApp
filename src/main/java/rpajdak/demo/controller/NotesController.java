@@ -3,6 +3,7 @@ package rpajdak.demo.controller;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rpajdak.demo.model.DeletedNote;
 import rpajdak.demo.model.Note;
 import rpajdak.demo.service.NotesService;
 
@@ -31,7 +32,7 @@ public class NotesController {
     }
 
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(params = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @ResponseStatus(OK)
     public Note getNoteById(@PathVariable("id") Long id) {
@@ -53,4 +54,17 @@ public class NotesController {
     }
 
 
+    @PutMapping
+    @ResponseBody
+    @ResponseStatus(OK)
+    public void updateNote(@RequestBody Note note) {
+        notesService.updateNote(note);
+    }
+
+    @GetMapping(value = "/deleted", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @ResponseStatus(OK)
+    public List<DeletedNote> getAllDeletedNotes() {
+        return notesService.getAllDeletedNotes();
+    }
 }

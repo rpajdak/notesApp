@@ -54,4 +54,13 @@ public class NotesService {
                 .build();
         deletedNotesRepository.save(deletedNote);
     }
+
+    public void updateNote(Note note) {
+        Note existingNote = notesRepository.getNoteById(note.getId());
+    }
+
+    public List<DeletedNote> getAllDeletedNotes() {
+        return deletedNotesRepository.findAll();
+    }
+
 }
