@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import rpajdak.demo.model.Note;
 
 @Repository
-public interface NotesRepository extends JpaRepository<Long, Note> {
+public interface NotesRepository extends JpaRepository<Note,Long> {
 }
