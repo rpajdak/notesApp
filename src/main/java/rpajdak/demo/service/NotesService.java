@@ -5,6 +5,7 @@ import rpajdak.demo.model.Note;
 import rpajdak.demo.repository.NotesRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class NotesService {
@@ -21,7 +22,11 @@ public class NotesService {
     }
 
     public Note getNoteById(Long id) {
-      return notesRepository.getNoteById(id);
+        return notesRepository.getNoteById(id);
+    }
+
+    public List<Note> getAllNotes() {
+        return notesRepository.findAll();
     }
 
     private void setCurrentDateToNewNote(Note note) {

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import rpajdak.demo.model.Note;
 import rpajdak.demo.service.NotesService;
 
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
@@ -33,8 +35,16 @@ public class NotesController {
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @ResponseStatus(OK)
-    public Note getNoteById(@PathVariable("id")Long id){
+    public Note getNoteById(@PathVariable("id") Long id) {
         return notesService.getNoteById(id);
     }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @ResponseStatus(OK)
+    public List<Note> getAllNotes() {
+        return notesService.getAllNotes();
+    }
+
 
 }
