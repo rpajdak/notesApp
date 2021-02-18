@@ -1,7 +1,10 @@
 package rpajdak.demo.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import rpajdak.demo.model.DeletedNote;
 import rpajdak.demo.model.Note;
+import rpajdak.demo.repository.DeletedNotesRepository;
 import rpajdak.demo.repository.NotesRepository;
 
 import java.time.LocalDate;
@@ -11,9 +14,11 @@ import java.util.List;
 public class NotesService {
 
     NotesRepository notesRepository;
+    DeletedNotesRepository deletedNotesRepository;
 
-    public NotesService(NotesRepository notesRepository) {
+    public NotesService(NotesRepository notesRepository, DeletedNotesRepository deletedNotesRepository) {
         this.notesRepository = notesRepository;
+        this.deletedNotesRepository = deletedNotesRepository;
     }
 
     public void addNote(Note note) {
@@ -31,5 +36,22 @@ public class NotesService {
 
     private void setCurrentDateToNewNote(Note note) {
         note.setCreated(LocalDate.now());
+    }
+
+    @Transactional
+    public void deleteNote(long id) {
+        Note note = notesRepository.getNoteById(id);
+        moveNoteToDeleted(note);
+        notesRepository.deleteById(id);
+    }
+
+    private void moveNoteToDeleted(Note note) {
+        DeletedNote deletedNote = DeletedNote.builder()
+                .OldId(note.getId())
+                .title(note.getTitle())
+                .content(note.getContent())
+                .created(note.getCreated())
+                .build();
+        deletedNotesRepository.save(deletedNote);
     }
 }
