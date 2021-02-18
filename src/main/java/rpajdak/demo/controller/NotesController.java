@@ -1,11 +1,13 @@
 package rpajdak.demo.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rpajdak.demo.model.Note;
 import rpajdak.demo.service.NotesService;
 
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
@@ -27,5 +29,12 @@ public class NotesController {
         return ResponseEntity.status(CREATED).body("Note has been created.");
     }
 
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @ResponseStatus(OK)
+    public Note getNoteById(@PathVariable("id")Long id){
+        return notesService.getNoteById(id);
+    }
 
 }
