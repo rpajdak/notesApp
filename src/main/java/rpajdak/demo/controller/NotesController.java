@@ -33,7 +33,7 @@ public class NotesController {
     }
 
 
-    @GetMapping(params = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @ResponseStatus(OK)
     public Note getNoteById(@PathVariable("id") Long id) {
