@@ -4,8 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rpajdak.demo.model.DeletedNote;
 import rpajdak.demo.model.Note;
+import rpajdak.demo.model.UpdatedNote;
 import rpajdak.demo.repository.DeletedNotesRepository;
 import rpajdak.demo.repository.NotesRepository;
+import rpajdak.demo.repository.UpdatedNotesRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,10 +17,12 @@ public class NotesService {
 
     NotesRepository notesRepository;
     DeletedNotesRepository deletedNotesRepository;
+    UpdatedNotesRepository updatedNotesRepository;
 
-    public NotesService(NotesRepository notesRepository, DeletedNotesRepository deletedNotesRepository) {
+    public NotesService(NotesRepository notesRepository, DeletedNotesRepository deletedNotesRepository, UpdatedNotesRepository updatedNotesRepository) {
         this.notesRepository = notesRepository;
         this.deletedNotesRepository = deletedNotesRepository;
+        this.updatedNotesRepository = updatedNotesRepository;
     }
 
     public void addNote(Note note) {
@@ -56,11 +60,41 @@ public class NotesService {
     }
 
     public void updateNote(Note note) {
-        Note existingNote = notesRepository.getNoteById(note.getId());
+        Note oldNote = notesRepository.getNoteById(note.getId());
+
+        Long initialId = oldNote.getInitialId();
+        if (initialId == null) {
+            initialId = note.getId();
+        }
+
+        UpdatedNote updatedNote = UpdatedNote.builder()
+                .title(oldNote.getTitle())
+                .content(oldNote.getContent())
+                .created(oldNote.getCreated())
+                .modified(LocalDate.now())
+                .initialId(initialId)
+                .build();
+
+        updatedNotesRepository.save(updatedNote);
+
+        notesRepository.deleteById(note.getId());
+        Note newNote = Note.builder()
+                .title(note.getTitle())
+                .content(note.getTitle())
+                .created(oldNote.getCreated())
+                .modified(LocalDate.now())
+                .initialId(initialId)
+                .build();
+
+        addNote(newNote);
     }
 
     public List<DeletedNote> getAllDeletedNotes() {
         return deletedNotesRepository.findAll();
     }
 
+    public List<UpdatedNote> getAllUpdatesNotesByCurrentID(Long id) {
+        long initialId = notesRepository.getInitialId(id);
+        return updatedNotesRepository.findAllByInitialId(initialId);
+    }
 }
