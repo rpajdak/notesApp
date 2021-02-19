@@ -27,7 +27,7 @@ public class NotesController {
     @PostMapping()
     @ResponseBody
     @ResponseStatus(CREATED)
-    public ResponseEntity<Object> attemptToAddUser(@RequestBody Note note) {
+    public ResponseEntity<Object> addNote(@RequestBody Note note) {
         notesService.addNote(note);
         return ResponseEntity.status(CREATED).body("Note has been created.");
     }
