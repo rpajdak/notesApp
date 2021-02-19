@@ -73,7 +73,7 @@ public class NotesController {
     @ResponseBody
     @ResponseStatus(OK)
     public List<UpdatedNote> getAllUpdatesNotesById(@PathVariable("id") Long id) {
-        return notesService.getAllUpdatesNotesById(id);
+        return notesService.getAllUpdatesNotesByCurrentID(id);
     }
 
 
