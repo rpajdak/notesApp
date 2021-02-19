@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rpajdak.demo.model.DeletedNote;
 import rpajdak.demo.model.Note;
+import rpajdak.demo.model.UpdatedNote;
 import rpajdak.demo.service.NotesService;
 
 import java.util.List;
@@ -67,4 +68,13 @@ public class NotesController {
     public List<DeletedNote> getAllDeletedNotes() {
         return notesService.getAllDeletedNotes();
     }
+
+    @GetMapping(value = "/updated/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @ResponseStatus(OK)
+    public List<UpdatedNote> getAllUpdatesNotesById(@PathVariable("id") Long id) {
+        return notesService.getAllUpdatesNotesById(id);
+    }
+
+
 }
