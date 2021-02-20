@@ -1,6 +1,5 @@
 package rpajdak.demo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,7 @@ import rpajdak.demo.service.NotesService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -69,6 +68,19 @@ public class NotesControllerIntegrationTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(note)))
                 .andExpect(status().isCreated());
+
+    }
+
+    @Test
+    public void should_return_no_content_code_when_user_removed() throws Exception {
+
+        Note note = new Note();
+        note.setId(1L);
+
+        mockMvc.perform(delete("/notes/{id}", 1))
+                .andExpect(status().isNoContent());
+
+        verify(notesService, times(1)).deleteNote(any(Long.class));
 
     }
 
