@@ -17,11 +17,11 @@ import java.time.LocalDate;
 @Table(name = "updated_note")
 public class UpdatedNote {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "initial_id")
     private Long initialId;
 
