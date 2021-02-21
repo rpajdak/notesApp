@@ -17,11 +17,11 @@ import java.time.LocalDate;
 @Table(name = "note")
 public class Note {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "initial_id")
     private Long initialId;
 
@@ -47,7 +47,6 @@ public class Note {
         this.created = created;
         this.modified = modified;
     }
-
 
 
 }
