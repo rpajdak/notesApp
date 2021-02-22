@@ -47,7 +47,7 @@ public class NotesController {
         return notesService.getAllNotes();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     @ResponseBody
     @ResponseStatus(NO_CONTENT)
     public void deleteNote(@PathVariable("id") long id) {
@@ -55,7 +55,7 @@ public class NotesController {
     }
 
 
-    @PutMapping
+    @PutMapping()
     @ResponseBody
     @ResponseStatus(OK)
     public void updateNote(@RequestBody Note note) {
