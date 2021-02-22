@@ -1,8 +1,16 @@
 #Simple  Notes App written in JavaSpring, React. It uses PostgreSQL database. All notes are stored in database including deleted ones and old version od edited notes.
 
+##
+Backend repository 
+https://github.com/rpajdak/notesApp
+##
+Frontend repository
+https://github.com/rpajdak/notesApp-client
+
 #To start this application it is required to have installed React and Java and PostgreSQL database with created table named "notesapp".;
 
-##Start FrontEnd part
+
+##Start Frontend part
 
 In the project directory, you can run:
 ### `npm start`
@@ -11,7 +19,7 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-##Start BackEnd part
+##Start Backend part
 
 It is recommended to use IntelliJ IDEA to start backend side.
 
