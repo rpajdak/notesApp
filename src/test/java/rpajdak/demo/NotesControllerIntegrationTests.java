@@ -18,6 +18,7 @@ import rpajdak.demo.service.NotesService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -35,8 +36,14 @@ public class NotesControllerIntegrationTests {
 
     private MockMvc mockMvc;
 
+    private Note note;
+
     @Before
     public void setUp() {
+        this.note = Note.builder()
+                .title("note #1 title")
+                .content("note #1 content")
+                .build();
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 
     }
@@ -72,9 +79,9 @@ public class NotesControllerIntegrationTests {
     }
 
     @Test
-    public void should_return_no_content_code_when_user_removed() throws Exception {
+    public void should_return_no_content_code_when_note_removed() throws Exception {
 
-        Note note = new Note();
+
         note.setId(1L);
 
         mockMvc.perform(delete("/notes/{id}", 1))
@@ -83,5 +90,15 @@ public class NotesControllerIntegrationTests {
         verify(notesService, times(1)).deleteNote(any(Long.class));
 
     }
+
+    @Test
+    public void should_return_ok_code_when_note_update() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.put("/notes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(note)))
+                .andExpect(status().isOk());
+
+    }
+
 
 }
