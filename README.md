@@ -1,4 +1,4 @@
-#Simple  Notes App written in JavaSpring, React. It uses PostgreSQL database.
+#Simple  Notes App written in JavaSpring, React. It uses PostgreSQL database. All notes are stored in database including deleted ones and old version od edited notes.
 
 #To start this application it is required to have installed React and Java and PostgreSQL database with created table named "notesapp".;
 
@@ -42,4 +42,24 @@ To get all deleted notes with method "GET"
 
 To history of modified note with method "GET"
 "http://localhost:3000/notes/updated/{id}"
+
+View of section to add new note.
+![New note](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/addnote.png)
+
+View of section of all notes.
+![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/allNotes.png)
+
+View of section of all deleted notes.
+![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/allDeleted.png)
+
+When "Delete this note" button is clicked-pop-up show up.
+![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/deletedNote.png)
+
+View of section to edit note.
+![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/editNote.png)
+
+View of history of edited note.
+![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/historyOfUpdated.png)
+
+
  
