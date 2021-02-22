@@ -52,7 +52,7 @@ View of section of all notes.
 View of section of all deleted notes.
 ![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/allDeleted.png)
 
-When "Delete this note" button is clicked-pop-up show up.
+When "Delete this note" button is clicked-pop-up shows up.
 ![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/deletedNote.png)
 
 View of section to edit note.
