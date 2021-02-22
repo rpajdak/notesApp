@@ -56,6 +56,13 @@ public class NotesService {
                 .content(note.getContent())
                 .created(note.getCreated())
                 .build();
+
+        LocalDate modified = note.getModified();
+
+        if (modified != null) {
+            deletedNote.setModified(modified);
+        }
+
         deletedNotesRepository.save(deletedNote);
     }
 
