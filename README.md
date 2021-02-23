@@ -53,21 +53,28 @@ To history of modified note with method "GET"
 
 View of section to add new note.
 
+![Add note](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/addNote.png)
 
 View of section of all notes.
 
+![All notes](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/allNotesNew.png)
+
+When title of note is clicked the content is shown
+
+![Content shown](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/contentShown.png)
 
 View of section of all deleted notes.
 
+![Delete note](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/allDeletedNew.png)
 
 When "Delete this note" button is clicked-pop-up shows up.
 
+![Delete note](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/deleteNote.png)
 
 View of section to edit note.
 
+![Edit notes](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/editNote.png)
 
 View of history of edited note.
 
-
-
- 
+![History of note](https://github.com/rpajdak/notesApp/blob/master/src/main/assets/historyOfUpdated.png)
