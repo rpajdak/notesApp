@@ -52,22 +52,22 @@ To history of modified note with method "GET"
 "http://localhost:3000/notes/updated/{id}"
 
 View of section to add new note.
-![New note](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/addnote.png)
+
 
 View of section of all notes.
-![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/allNotesNew.png)
+
 
 View of section of all deleted notes.
-![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/allDeletedNew.png)
+
 
 When "Delete this note" button is clicked-pop-up shows up.
-![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/deletedNoteNew.png)
+
 
 View of section to edit note.
-![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/editNote.png)
+
 
 View of history of edited note.
-![All notes](https://github.com/rpajdak/notesApp/blob/dev/src/main/assets/historyOfUpdated.png)
+
 
 
  
